@@ -11,4 +11,4 @@ class User(db.Model):
     favorite_genre = db.Column(db.String)
 
     def __repr__(self):
-        return f"<User '{self.name.title()}'>"
+        return f"<User '{self.email}'>"

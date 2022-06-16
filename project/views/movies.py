@@ -15,7 +15,7 @@ class MoviesView(Resource):
 
 @movie_ns.route('/<int:mid>')
 class MovieView(Resource):
-    def get(self, bid):
-        b = movie_service.get_one(bid)
+    def get(self, mid):
+        b = movie_service.get_one(mid)
         sm_d = MoviesSchema().dump(b)
         return sm_d, 200
