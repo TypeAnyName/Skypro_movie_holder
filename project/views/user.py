@@ -22,6 +22,7 @@ class UserView(Resource):
         user_service.update_part(data, uid)
         return '', 204
 
+    @auth_required
     def put(self, uid):
         req_json = request.json
         user_service.update(req_json, uid)
