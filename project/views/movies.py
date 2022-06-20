@@ -1,3 +1,5 @@
+from flask import request
+
 from project.container import movie_service
 from project.schemas.movies import MoviesSchema
 from flask_restx import Resource, Namespace
@@ -8,9 +10,10 @@ movie_ns = Namespace('movies')
 @movie_ns.route('/')
 class MoviesView(Resource):
     def get(self):
-        movies = movie_service.get_all()
-        result = MoviesSchema(many=True).dump(movies)
-        return result, 200
+        page = request.args.get('page', type=int)
+        status = request.args.get('status')
+        movies = movie_service.get_all(page, status)
+        return MoviesSchema(many=True).dump(movies), 200
 
 
 @movie_ns.route('/<int:mid>')

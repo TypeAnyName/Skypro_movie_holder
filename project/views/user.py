@@ -21,3 +21,10 @@ class UserView(Resource):
         data = request.get_json()
         user_service.update_part(data, uid)
         return '', 204
+
+    def put(self, uid):
+        req_json = request.json
+        user_service.update(req_json, uid)
+        return "", 204
+
+

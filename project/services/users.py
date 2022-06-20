@@ -16,10 +16,6 @@ class UserService:
     def get_all(self):
         return self.user_dao.get_all()
 
-    def update(self, uid):
-        self.user_dao.update(uid)
-        return self.user_dao
-
     def get_user_by_email(self, email):
         return self.user_dao.get_user_by_email(email)
 
@@ -49,6 +45,14 @@ class UserService:
                 PWD_HASH_ITERATIONS
             )
         )
+
+    def update(self, data, uid):
+        user = self.get_one(uid)
+        if self.compare_passwords(user.password, data["password_1"]):
+            new_password = self.generate_user_password(data["password_2"])
+            return self.user_dao.update(data, new_password, uid)
+        else:
+            raise Exception
 
     def update_part(self, data, uid):
         user = self.user_dao.get_one(uid)

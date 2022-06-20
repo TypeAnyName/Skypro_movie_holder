@@ -3,14 +3,11 @@
 
 
 class BaseConfig:
-    # SECRET_KEY = "you-will-never-guess"
     JSON_AS_ASCII = False
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = 'sqlite:///project.db'
-
-    # ITEMS_PER_PAGE = 12
-
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    ITEMS_PER_PAGE = 12
 
     # TOKEN_EXPIRE_MINUTES = 15
     # TOKEN_EXPIRE_DAYS = 130
