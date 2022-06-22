@@ -20,7 +20,7 @@ class UserDAO:
     def get_all(self):
         return self.session.query(User).all()
 
-    def update(self, data, new_password, uid):
+    def update(self, new_password, uid):
         user = self.get_one(uid)
         user.password = new_password
 

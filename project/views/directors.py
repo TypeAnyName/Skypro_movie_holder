@@ -2,7 +2,7 @@ from flask_restx import Resource, Namespace
 from project.container import director_service
 from project.schemas.directors import DirectorsSchema
 
-directors_ns = Namespace('directors/')
+directors_ns = Namespace('directors')
 
 
 @directors_ns.route('/')
@@ -13,7 +13,7 @@ class DirectorsView(Resource):
         return result, 200
 
 
-@directors_ns.route('/<int:did>')
+@directors_ns.route('/<int:did>/')
 class DirectorView(Resource):
     def get(self, did):
         director = director_service.get_one(did)

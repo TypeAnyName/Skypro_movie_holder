@@ -6,7 +6,7 @@ from project.container import auth_service, user_service
 auth_ns = Namespace('auth')
 
 
-@auth_ns.route('/register')
+@auth_ns.route('/register/')
 class AuthRigister(Resource):
     def post(self):
         req_json = request.json
@@ -14,7 +14,7 @@ class AuthRigister(Resource):
         return "", 201
 
 
-@auth_ns.route('/login')
+@auth_ns.route('/login/')
 class AuthLogin(Resource):
     def post(self):
         req_json = request.json

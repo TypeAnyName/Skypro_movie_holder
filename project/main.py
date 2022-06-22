@@ -8,6 +8,7 @@ from project.views.movies import movie_ns
 from project.config import BaseConfig
 from project.setup_db import db
 from project.views.user import user_ns
+from flask_cors import CORS
 
 api = Api(title="Flask Course Project 3", doc="/docs")
 
@@ -18,18 +19,21 @@ def create_app(config_object):
                         static_folder="C:/Users/alexg/PycharmProjects/CW3/static"
                         )
     application.config.from_object(config_object)
-    register_extensions(application)
 
-    @application.route('/index/')
+    @application.route('/')
     def index():
         return render_template('index.html')
+
+    register_extensions(application)
+
+    CORS(app=application)
 
     return application
 
 
 def register_extensions(application):
     db.init_app(application)
-    api = Api(application)
+    api.init_app(application)
     api.add_namespace(movie_ns)
     api.add_namespace(genres_ns)
     api.add_namespace(directors_ns)

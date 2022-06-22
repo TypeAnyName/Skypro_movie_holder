@@ -5,10 +5,10 @@ from project.schemas.users import UsersSchema
 from project.container import user_service
 from project.tools.security import auth_required
 
-user_ns = Namespace('users/')
+user_ns = Namespace('users')
 
 
-@user_ns.route("/<int:uid>")
+@user_ns.route("/<int:uid>/")
 class UserView(Resource):
     @auth_required
     def get(self, uid):

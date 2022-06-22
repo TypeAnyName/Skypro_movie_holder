@@ -4,7 +4,7 @@ from project.container import movie_service
 from project.schemas.movies import MoviesSchema
 from flask_restx import Resource, Namespace
 
-movie_ns = Namespace('movies/')
+movie_ns = Namespace('movies')
 
 
 @movie_ns.route('/')
@@ -16,7 +16,7 @@ class MoviesView(Resource):
         return MoviesSchema(many=True).dump(movies), 200
 
 
-@movie_ns.route('/<int:mid>')
+@movie_ns.route('/<int:mid>/')
 class MovieView(Resource):
     def get(self, mid):
         b = movie_service.get_one(mid)
