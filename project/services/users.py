@@ -48,8 +48,8 @@ class UserService:
 
     def update(self, data, uid):
         user = self.get_one(uid)
-        if self.compare_passwords(user.password, data["password_1"]):
-            new_password = self.generate_user_password(data["password_2"])
+        if self.compare_passwords(user.password, data["old_password"]):
+            new_password = self.generate_user_password(data["new_password"])
             return self.user_dao.update(data, new_password, uid)
         else:
             raise Exception

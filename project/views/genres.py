@@ -2,7 +2,7 @@ from flask_restx import Resource, Namespace
 from project.container import genre_service
 from project.schemas.genre import GenreSchema
 
-genres_ns = Namespace('genres')
+genres_ns = Namespace('genres/')
 
 
 @genres_ns.route('/')

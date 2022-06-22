@@ -4,7 +4,7 @@ from project.container import movie_service
 from project.schemas.movies import MoviesSchema
 from flask_restx import Resource, Namespace
 
-movie_ns = Namespace('movies')
+movie_ns = Namespace('movies/')
 
 
 @movie_ns.route('/')

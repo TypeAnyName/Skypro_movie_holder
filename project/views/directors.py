@@ -2,7 +2,7 @@ from flask_restx import Resource, Namespace
 from project.container import director_service
 from project.schemas.directors import DirectorsSchema
 
-directors_ns = Namespace('directors')
+directors_ns = Namespace('directors/')
 
 
 @directors_ns.route('/')
