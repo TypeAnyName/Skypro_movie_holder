@@ -7,7 +7,7 @@ from project.services.directors import DirectorsService
 from project.services.genres import GenreService
 from project.services.movies import MoviesService
 from project.services.users import UserService
-from setup_db import db
+from project.setup_db import db
 
 
 genre_dao = GenreDAO(session=db.session)
